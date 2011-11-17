@@ -1,0 +1,26 @@
+var flag = 0;
+var array = new Array();
+var index =0;
+while(flag == 0){
+	var tmp = document.getElementById('card'+(index++));
+	if(tmp == null){	
+		flag = 1;
+	}else{
+		array.push(tmp);
+	}
+}
+var myevent = document.createEvent('MouseEvents');
+myevent.initEvent('click', false, true);
+for(var j = 0;j < array.length; j++){
+	for(i =0;i<array.length;i++){
+			array[j].dispatchEvent(myevent);
+			array[i].dispatchEvent(myevent);	
+			if(array[i].style.backgroundColor == array[j].style.backgroundColor){
+				delete array[i];
+				delete array[j];
+				break;
+			}
+		}
+	}
+
+
